@@ -26,8 +26,11 @@ module.exports = function(deployTarget) {
       username: 'deploy',
       remoteDir: '/some/path/on/the/server',
       commands: [
-        './my-command.sh foo bar',
+        './my-command.sh foo bar {revisionKey}',
       ],
+      revisionKey: function(context) {
+        return context.revisionKey;
+      },
     },
     // ...
   };
@@ -47,6 +50,7 @@ Optional:
  - privateKey
  - passphrase
  - agent
+ - revisionKey
 
 ## Contributing
 
